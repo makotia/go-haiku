@@ -4,7 +4,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ikawaha/kagome/tokenizer"
+	neologd "github.com/ikawaha/kagome-dict-ipa-neologd"
+	"github.com/ikawaha/kagome/v2/tokenizer"
 )
 
 var (
@@ -46,7 +47,7 @@ func countChars(s string) int {
 
 // Match return true when text matches with rule(s).
 func Match(text string, rule []int) bool {
-	t := tokenizer.New()
+	t, _ := tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
 	text = reIgnoreText.ReplaceAllString(text, " ")
 	tokens := t.Tokenize(text)
 	pos := 0
@@ -89,14 +90,7 @@ func FindWithOpt(text string, rule []int, opt *Opt) ([]string, error) {
 	if len(rule) == 0 {
 		return nil, nil
 	}
-	t := tokenizer.New()
-	if opt != nil && opt.Udic != "" {
-		dic, err := tokenizer.NewUserDic(opt.Udic)
-		if err != nil {
-			return nil, err
-		}
-		t.SetUserDic(dic)
-	}
+	t, _ := tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
 	text = reIgnoreText.ReplaceAllString(text, " ")
 	tokens := t.Tokenize(text)
 	pos := 0
