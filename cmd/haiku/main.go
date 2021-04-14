@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/makotia/go-haiku"
 	"github.com/mattn/go-encoding"
-	"github.com/mattn/go-haiku"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/charset"
 )

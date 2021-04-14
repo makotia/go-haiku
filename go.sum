@@ -1,5 +1,3 @@
-github.com/ikawaha/kagome v1.11.2 h1:eCWpLqv5Euqa5JcwkaobUSy6uGM8rwwMw5Su3eRepBI=
-github.com/ikawaha/kagome v1.11.2/go.mod h1:lHwhkGuuWqKWTxeQMppD0EmQAfKbc39QKx9qoWqgo+A=
 github.com/ikawaha/kagome-dict v1.0.1/go.mod h1:pbeH4qwp/LVWKNePhU4Mh11w/l8uUSXKxfvNwRkj3NY=
 github.com/ikawaha/kagome-dict v1.0.2 h1:RlrQcNm7AcgBrzBcZC+1sniAWxmOECdeJHpJ5G1XFlU=
 github.com/ikawaha/kagome-dict v1.0.2/go.mod h1:JCwHr4WOrGRsC2cJU3751mJvL1hIAAZVeIrkl8n3jkk=
@@ -16,8 +14,6 @@ github.com/ikawaha/kagome/v2 v2.4.4 h1:DAJDbjz6D5BtekIsow6laVRQ9y74CPKgNInR1l+q9
 github.com/ikawaha/kagome/v2 v2.4.4/go.mod h1:4yR0rtgtJwfOZsnxXx87R4i8An11v4Mj+V6dTcJmwr4=
 github.com/mattn/go-encoding v0.0.2 h1:OC1L+QXLJge9n7yIE3R5Os/UNasUeFvK3Sa4NjbDi6c=
 github.com/mattn/go-encoding v0.0.2/go.mod h1:WUNsdPQLK4JYRzkn8IAdmYKFYGGJ4/9YPxdPoMumPgY=
-github.com/mattn/go-haiku v0.0.0-20171205103758-d522829740d3 h1:r7zdFOWFs9Pvys2arGVNjaDh5SwrJVvwwi4HAKWp8bk=
-github.com/mattn/go-haiku v0.0.0-20171205103758-d522829740d3/go.mod h1:5HDms+WHAh9TAb1kX3hzQ44D7euXtbCbE5Hm0HFLbAw=
 golang.org/x/net v0.0.0-20210119194325-5f4716e94777 h1:003p0dJM77cxMSyCPFphvZf/Y5/NXf5fzg6ufd1/Oew=
 golang.org/x/net v0.0.0-20210119194325-5f4716e94777/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
 golang.org/x/sys v0.0.0-20201119102817-f84b799fce68/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
