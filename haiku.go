@@ -13,6 +13,7 @@ var (
 	reIgnoreText = regexp.MustCompile(`[\[\]「」『』]`)
 	reIgnoreChar = regexp.MustCompile(`[ァィゥェォャュョ]`)
 	reKana       = regexp.MustCompile(`[ァ-タダ-ヶ]`)
+	tokenizerInstance, _ = tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
 )
 
 func isEnd(c []string) bool {
@@ -47,9 +48,8 @@ func countChars(s string) int {
 
 // Match return true when text matches with rule(s).
 func Match(text string, rule []int) bool {
-	t, _ := tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
 	text = reIgnoreText.ReplaceAllString(text, " ")
-	tokens := t.Tokenize(text)
+	tokens := tokenizerInstance.Tokenize(text)
 	pos := 0
 	r := make([]int, len(rule))
 	copy(r, rule)
@@ -90,9 +90,8 @@ func FindWithOpt(text string, rule []int, opt *Opt) ([]string, error) {
 	if len(rule) == 0 {
 		return nil, nil
 	}
-	t, _ := tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
 	text = reIgnoreText.ReplaceAllString(text, " ")
-	tokens := t.Tokenize(text)
+	tokens := tokenizerInstance.Tokenize(text)
 	pos := 0
 	r := make([]int, len(rule))
 	copy(r, rule)
