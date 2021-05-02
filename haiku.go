@@ -4,8 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	neologd "github.com/ikawaha/kagome-dict-ipa-neologd"
-	"github.com/ikawaha/kagome/v2/tokenizer"
+	"github.com/yukihir0/mecab-go"
 )
 
 var (
@@ -13,7 +12,7 @@ var (
 	reIgnoreText = regexp.MustCompile(`[\[\]「」『』]`)
 	reIgnoreChar = regexp.MustCompile(`[ァィゥェォャュョ]`)
 	reKana       = regexp.MustCompile(`[ァ-タダ-ヶ]`)
-	tokenizerInstance, _ = tokenizer.New(neologd.Dict(), tokenizer.OmitBosEos())
+	args         = mecab.NewArgs()
 )
 
 func isEnd(c []string) bool {
@@ -49,14 +48,19 @@ func countChars(s string) int {
 // Match return true when text matches with rule(s).
 func Match(text string, rule []int) bool {
 	text = reIgnoreText.ReplaceAllString(text, " ")
-	tokens := tokenizerInstance.Tokenize(text)
+	args := mecab.NewArgs()
+	args.DicDir = "/usr/local/lib/mecab/dic/mecab-ipadic-neologd"
+	tokens, err := mecab.Parse(text)
+	if err != nil {
+		return false
+	}
 	pos := 0
 	r := make([]int, len(rule))
 	copy(r, rule)
 
 	for i := 0; i < len(tokens); i++ {
 		tok := tokens[i]
-		c := tok.Features()
+		c := strings.Split(tok.Feature, ",")
 		if len(c) == 0 {
 			continue
 		}
@@ -91,7 +95,11 @@ func FindWithOpt(text string, rule []int, opt *Opt) ([]string, error) {
 		return nil, nil
 	}
 	text = reIgnoreText.ReplaceAllString(text, " ")
-	tokens := tokenizerInstance.Tokenize(text)
+	tokens, err := mecab.Parse(text)
+	if err != nil {
+		return []string{}, err
+	}
+
 	pos := 0
 	r := make([]int, len(rule))
 	copy(r, rule)
@@ -124,7 +132,7 @@ func FindWithOpt(text string, rule []int, opt *Opt) ([]string, error) {
 	ret := []string{}
 	for i := 0; i < len(tokens); i++ {
 		tok := tokens[i]
-		c := tok.Features()
+		c := strings.Split(tok.Feature, ",")
 		if len(c) == 0 || isSpace(c) {
 			continue
 		}
