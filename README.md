@@ -1,6 +1,7 @@
-# haiku
+# go-haiku
 
-古池や蛙飛び込む水の音
+これは、 [mattn/go-haiku](https://github.com/mattn/go-haiku) のフォークです。
+フォーク元では Pure Go で書かれている kagome を形態素解析エンジンとして使用していましたが、 mecab-ipadic-neologd を使おうとするとビルド時間がとてつもなく長くなり、さらに立ち上がりや処理が遅く、メモリをバカ食いしていたため、こちらのフォークでは MeCab に切り替えています。
 
 Haiku Matcher
 
@@ -59,7 +60,7 @@ $ haiku -r 5,7,5,7,7 -u "https://ja.wikipedia.org/wiki/フクロウ"
 ## Installation
 
 ```
-$ go get github.com/mattn/go-haiku/cmd/haiku
+$ go get github.com/makotia/go-haiku/cmd/haiku
 ```
 
 ## License
@@ -69,3 +70,7 @@ MIT
 ## Author
 
 Yasuhiro Matsumoto (a.k.a mattn)
+
+## Forked
+
+makotia
